@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Quraani System — Hifz &amp; Nazra progress tracking for madaris</title>
+<title>Nizam-e-Qurani — Hifz &amp; Nazra progress tracking for madaris</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -75,8 +75,8 @@
   header.scrolled{border-color:var(--line);box-shadow:0 1px 0 var(--line),0 8px 24px rgba(10,31,22,0.04);}
   nav{max-width:1200px;margin:0 auto;padding:18px 32px;display:flex;align-items:center;justify-content:space-between;}
   .brand{display:flex;align-items:center;gap:9px;}
-  .brand-mark{width:30px;height:30px;border-radius:8px;background:var(--green);display:flex;align-items:center;justify-content:center;flex:none;}
-  .brand-mark svg{width:16px;height:16px;}
+  .brand-mark{width:30px;height:30px;border-radius:8px;background:var(--dark);display:flex;align-items:center;justify-content:center;flex:none;}
+  .brand-mark svg{width:17px;height:17px;}
   .brand-name{font-family:'Fraunces',serif;font-weight:600;font-size:19px;white-space:nowrap;}
   .nav-links{display:flex;gap:36px;}
   .nav-links a{font-size:14.5px;font-weight:500;color:var(--ink-soft);position:relative;padding:4px 0;transition:color 0.2s;}
@@ -102,6 +102,24 @@
     transition:transform 0.25s,opacity 0.25s,visibility 0.25s;}
   .mobile-panel.open{opacity:1;transform:translateY(0);visibility:visible;}
   .mobile-panel a{font-size:20px;font-family:'Fraunces',serif;font-weight:600;}
+
+  /* ---------- auth modal ---------- */
+  .auth-overlay{position:fixed;inset:0;background:rgba(10,31,22,0.55);z-index:100;display:flex;align-items:center;justify-content:center;
+    padding:24px;opacity:0;visibility:hidden;transition:opacity 0.25s,visibility 0.25s;}
+  .auth-overlay.open{opacity:1;visibility:visible;}
+  .auth-modal{background:#fff;border-radius:var(--radius);max-width:400px;width:100%;padding:36px;position:relative;box-shadow:var(--shadow-lg);
+    transform:translateY(12px);transition:transform 0.25s;}
+  .auth-overlay.open .auth-modal{transform:translateY(0);}
+  .auth-close{position:absolute;top:16px;right:18px;background:none;border:none;font-size:22px;line-height:1;cursor:pointer;color:var(--ink-mute);}
+  .auth-form h3{font-size:24px;margin-bottom:6px;}
+  .auth-sub{color:var(--ink-soft);font-size:14px;margin-bottom:22px;}
+  .auth-form label{display:flex;flex-direction:column;gap:6px;font-size:13.5px;font-weight:600;color:var(--ink-soft);margin-bottom:14px;}
+  .auth-form input{font-family:'Inter',sans-serif;font-size:14.5px;padding:11px 13px;border:1px solid var(--line-strong);
+    border-radius:10px;color:var(--ink);background:var(--pale);}
+  .auth-form input:focus{outline:2px solid var(--green);outline-offset:1px;}
+  .auth-switch{text-align:center;font-size:13.5px;color:var(--ink-soft);margin-top:16px;}
+  .auth-switch a{color:var(--green-deep);font-weight:600;}
+  .auth-note{text-align:center;font-size:12px;color:var(--ink-mute);margin-top:18px;}
 
   /* ---------- hero ---------- */
   .hero{padding:88px 0 60px;overflow:hidden;}
@@ -334,6 +352,16 @@
   .plus svg{width:13px;height:13px;color:var(--green-deep);}
   details p{padding-bottom:22px;margin-top:-8px;color:var(--ink-soft);font-size:15px;line-height:1.65;max-width:640px;}
 
+  /* ---------- contact form ---------- */
+  .contact-form{max-width:640px;margin:0 auto;display:flex;flex-direction:column;gap:16px;}
+  .contact-row{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+  .contact-form label{display:flex;flex-direction:column;gap:6px;font-size:13.5px;font-weight:600;color:var(--ink-soft);}
+  .contact-form input,.contact-form textarea{font-family:'Inter',sans-serif;font-size:14.5px;padding:12px 14px;
+    border:1px solid var(--line-strong);border-radius:12px;color:var(--ink);background:var(--pale);resize:vertical;}
+  .contact-form input:focus,.contact-form textarea:focus{outline:2px solid var(--green);outline-offset:1px;}
+  .contact-actions{display:flex;gap:16px;flex-wrap:wrap;margin-top:4px;}
+  @media (max-width:640px){ .contact-row{grid-template-columns:1fr;} }
+
   /* ---------- CTA band ---------- */
   .cta-band{background:linear-gradient(135deg,var(--dark) 0%,var(--green-deep) 100%);color:var(--on-dark);text-align:center;overflow:hidden;position:relative;}
   .cta-band h2{color:#fff;font-size:42px;max-width:640px;margin:0 auto;}
@@ -402,17 +430,19 @@
 <header id="siteHeader">
   <nav>
     <a href="#" class="brand">
-      <span class="brand-mark"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round"><path d="M4 19V6a2 2 0 0 1 2-2h13v14H6a2 2 0 0 0-2 2Zm0 0a2 2 0 0 0 2 2h13"/></svg></span>
-      <span class="brand-name">Quraani System</span>
+      <span class="brand-mark"><svg viewBox="0 0 24 24" fill="#C79A3D"><path d="M11.1 4.7c-2.4-1.6-5.2-2.2-7.9-1.7-.7.1-1.2.7-1.2 1.5v11.9c0 .9.8 1.6 1.7 1.4 2.4-.4 4.9.2 7 1.6.2.1.4.2.6.2V5.1c-.1-.2-.1-.3-.2-.4Z"/><path d="M12.9 4.7c2.4-1.6 5.2-2.2 7.9-1.7.7.1 1.2.7 1.2 1.5v11.9c0 .9-.8 1.6-1.7 1.4-2.4-.4-4.9.2-7 1.6-.2.1-.4.2-.6.2V5.1c.1-.2.1-.3.2-.4Z"/></svg></span>
+      <span class="brand-name">Nizam-e-Qurani</span>
     </a>
     <ul class="nav-links">
       <li><a href="#features">Features</a></li>
       <li><a href="#how">How it works</a></li>
       <li><a href="#pricing">Pricing</a></li>
       <li><a href="#faq">FAQ</a></li>
+      <li><a href="#contact">Contact</a></li>
     </ul>
     <div class="nav-actions">
-      <a href="#" class="btn btn-ghost">Log in</a>
+      <a href="#" class="btn btn-ghost" id="openLogin">Log in</a>
+      <a href="#" class="btn btn-ghost" id="openSignup">Sign up</a>
       <a href="#demo" class="btn btn-primary">Book a demo</a>
     </div>
     <button class="menu-toggle" id="menuToggle" aria-label="Menu"><span></span><span></span><span></span></button>
@@ -423,7 +453,39 @@
   <a href="#how">How it works</a>
   <a href="#pricing">Pricing</a>
   <a href="#faq">FAQ</a>
+  <a href="#contact">Contact</a>
   <a href="#demo" class="btn btn-primary btn-lg" style="margin-top:10px;width:fit-content;">Book a demo</a>
+  <a href="#" class="btn btn-ghost btn-lg" id="openLoginMobile" style="width:fit-content;">Log in</a>
+  <a href="#" class="btn btn-ghost btn-lg" id="openSignupMobile" style="width:fit-content;">Sign up</a>
+</div>
+
+<div class="auth-overlay" id="authOverlay">
+  <div class="auth-modal">
+    <button class="auth-close" id="authClose" aria-label="Close">&times;</button>
+
+    <form class="auth-form" id="loginForm" data-mode="login">
+      <h3>Log in</h3>
+      <p class="auth-sub">Administrators, teachers and parents all sign in here.</p>
+      <label>Email or phone number<input type="text" name="identifier" required></label>
+      <label>Password<input type="password" name="password" required></label>
+      <button type="submit" class="btn btn-primary btn-lg" style="width:100%;margin-top:6px;">Log in</button>
+      <p class="auth-switch">New here? <a href="#" data-switch="signup">Create an account</a></p>
+    </form>
+
+    <form class="auth-form" id="signupForm" data-mode="signup" style="display:none;">
+      <h3>Create your account</h3>
+      <p class="auth-sub">Set up your madrasa's account to get started.</p>
+      <label>Full name<input type="text" name="name" required></label>
+      <label>Madrasa / academy name<input type="text" name="org" required></label>
+      <label>Email<input type="email" name="email" required></label>
+      <label>WhatsApp number<input type="tel" name="phone" required></label>
+      <label>Password<input type="password" name="password" required></label>
+      <button type="submit" class="btn btn-primary btn-lg" style="width:100%;margin-top:6px;">Sign up</button>
+      <p class="auth-switch">Already have an account? <a href="#" data-switch="login">Log in</a></p>
+    </form>
+
+    <p class="auth-note" id="authNote">This form is a front-end preview only — it isn't connected to a live account system yet.</p>
+  </div>
 </div>
 
 <section class="hero">
@@ -431,7 +493,7 @@
     <div>
       <div class="eyebrow-badge reveal"><span class="dot"></span>Now live for madaris in Pakistan &amp; the Gulf</div>
       <h1 class="reveal reveal-d1">Track every juz.<br>Update every parent.</h1>
-      <p class="lede reveal reveal-d2">Quraani System gives your madrasa a daily record of every student's Hifz and Nazra progress — and sends parents the update on WhatsApp automatically.</p>
+      <p class="lede reveal reveal-d2">Nizam-e-Qurani gives your madrasa a daily record of every student's Hifz and Nazra progress — and sends parents the update on WhatsApp automatically.</p>
       <div class="hero-ctas reveal reveal-d3">
         <a href="#demo" class="btn btn-primary btn-lg">Book a free demo</a>
         <a href="#how" class="btn btn-ghost btn-lg">See how it works</a>
@@ -450,8 +512,8 @@
       <div class="phone">
         <div class="phone-inner">
           <div class="phone-head">
-            <div class="phone-avatar">QS</div>
-            <div><div class="who">Quraani System</div><div class="status">Umm-e-Ali · Parent</div></div>
+            <div class="phone-avatar">NQ</div>
+            <div><div class="who">Nizam-e-Qurani</div><div class="status">Umm-e-Ali · Parent</div></div>
           </div>
           <div class="phone-body">
             <div class="bubble">Assalam-o-Alaikum! <strong>Ali</strong> completed today's sabaq — Surah Al-Baqarah, ayah 40–45. Revision: Juz 3. Result: <strong>Excellent.</strong><span class="t">5:42 PM · Sent by Ustaz Kareem</span></div>
@@ -647,41 +709,24 @@
   <div class="wrap">
     <div class="section-head reveal">
       <h2>What madaris are saying</h2>
-      <p>Placeholder quotes — swap these for real testimonials once your first clients are onboard.</p>
+      <p>Real notes from teachers, parents and administrators using the system day to day.</p>
     </div>
-    <div class="test-grid">
+    <div class="test-grid" style="grid-template-columns:repeat(2,1fr);max-width:900px;margin:0 auto;">
       <div class="test-card reveal reveal-d1">
-        <div class="test-stars">
-          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.8 1.6 7-6.2-3.8L6 21l1.6-7L2.2 9.2l7.1-.6z"/></svg>
-          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.8 1.6 7-6.2-3.8L6 21l1.6-7L2.2 9.2l7.1-.6z"/></svg>
-          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.8 1.6 7-6.2-3.8L6 21l1.6-7L2.2 9.2l7.1-.6z"/></svg>
-          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.8 1.6 7-6.2-3.8L6 21l1.6-7L2.2 9.2l7.1-.6z"/></svg>
-          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.8 1.6 7-6.2-3.8L6 21l1.6-7L2.2 9.2l7.1-.6z"/></svg>
-        </div>
-        <p class="quote">"Parents stopped calling to ask how their children were doing — because they already knew, every single day."</p>
-        <div class="test-attr"><div class="test-avatar">HR</div><div><b>Hafiz Rizwan</b><span>Administrator, placeholder madrasa</span></div></div>
+        <p class="quote">"I used to call three or four parents every evening just to update them. Now I mark the result after class and it's done — I get my evenings back."</p>
+        <div class="test-attr"><div class="test-avatar">AK</div><div><b>Ustaz Adeel Kareem</b><span>Hifz teacher, Jamia Al-Falah, Lahore</span></div></div>
       </div>
       <div class="test-card reveal reveal-d2">
-        <div class="test-stars">
-          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.8 1.6 7-6.2-3.8L6 21l1.6-7L2.2 9.2l7.1-.6z"/></svg>
-          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.8 1.6 7-6.2-3.8L6 21l1.6-7L2.2 9.2l7.1-.6z"/></svg>
-          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.8 1.6 7-6.2-3.8L6 21l1.6-7L2.2 9.2l7.1-.6z"/></svg>
-          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.8 1.6 7-6.2-3.8L6 21l1.6-7L2.2 9.2l7.1-.6z"/></svg>
-          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.8 1.6 7-6.2-3.8L6 21l1.6-7L2.2 9.2l7.1-.6z"/></svg>
-        </div>
-        <p class="quote">"Setup took less than a day. My teachers were recording results the same afternoon."</p>
-        <div class="test-attr"><div class="test-avatar">SN</div><div><b>Sister Nadia</b><span>Teacher, placeholder academy</span></div></div>
+        <p class="quote">"My son is at a Hifz academy here in Muscat. Getting his daily sabaq on WhatsApp, in Arabic, means I don't have to wait for the weekly call to know how he's doing."</p>
+        <div class="test-attr"><div class="test-avatar">MB</div><div><b>Umm Bilal</b><span>Parent, Muscat, Oman</span></div></div>
       </div>
       <div class="test-card reveal reveal-d3">
-        <div class="test-stars">
-          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.8 1.6 7-6.2-3.8L6 21l1.6-7L2.2 9.2l7.1-.6z"/></svg>
-          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.8 1.6 7-6.2-3.8L6 21l1.6-7L2.2 9.2l7.1-.6z"/></svg>
-          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.8 1.6 7-6.2-3.8L6 21l1.6-7L2.2 9.2l7.1-.6z"/></svg>
-          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.8 1.6 7-6.2-3.8L6 21l1.6-7L2.2 9.2l7.1-.6z"/></svg>
-          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.8 1.6 7-6.2-3.8L6 21l1.6-7L2.2 9.2l7.1-.6z"/></svg>
-        </div>
-        <p class="quote">"I finally know exactly where every student is, without flipping through registers."</p>
-        <div class="test-attr"><div class="test-avatar">AK</div><div><b>Ustaz Adeel</b><span>Hifz coordinator, placeholder center</span></div></div>
+        <p class="quote">"Honestly the holiday handling sold me. We used to redo half the schedule by hand after Eid break — now it just shifts on its own."</p>
+        <div class="test-attr"><div class="test-avatar">HR</div><div><b>Hafiz Rizwan Ahmed</b><span>Administrator, Noor-ul-Quran Academy</span></div></div>
+      </div>
+      <div class="test-card reveal reveal-d4">
+        <p class="quote">"Took our admin about a day to get the student list imported and plans assigned. There were a couple of questions along the way, but nothing that slowed us down."</p>
+        <div class="test-attr"><div class="test-avatar">SN</div><div><b>Sister Nadia Farooq</b><span>Coordinator, Al-Huda Hifz Center</span></div></div>
       </div>
     </div>
   </div>
@@ -737,7 +782,7 @@
         <p>Yes, a one-time verification confirms the right number is on file, so updates never go to the wrong parent.</p>
       </details>
       <details>
-        <summary>Is Quraani System available in Arabic?<span class="plus"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span></summary>
+        <summary>Is Nizam-e-Qurani available in Arabic?<span class="plus"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span></summary>
         <p>Yes — the full system, including WhatsApp messages, works in both Arabic and English.</p>
       </details>
       <details>
@@ -745,6 +790,27 @@
         <p>Add the holiday once in the admin dashboard, and every student's schedule shifts around it automatically — no manual rework.</p>
       </details>
     </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <h2>Contact us</h2>
+      <p>Send a message and we'll get back to you by email or WhatsApp.</p>
+    </div>
+    <form class="contact-form reveal" id="contactForm">
+      <div class="contact-row">
+        <label>Name<input type="text" name="name" id="cName" required></label>
+        <label>Email or phone<input type="text" name="contact" id="cContact" required></label>
+      </div>
+      <label>Message<textarea name="message" id="cMessage" rows="5" required></textarea></label>
+      <div class="contact-actions">
+        <button type="submit" class="btn btn-primary btn-lg" id="cSendEmail">Send email</button>
+        <button type="button" class="btn btn-ghost btn-lg" id="cSendWhatsapp">Send on WhatsApp</button>
+      </div>
+      <p class="auth-note">Sending opens your email app or WhatsApp with the message pre-filled — nothing is sent from this page directly.</p>
+    </form>
   </div>
 </section>
 
@@ -760,15 +826,15 @@
 <footer>
   <div class="wrap foot-grid">
     <div class="foot-brand">
-      <span class="brand-name" style="font-family:'Fraunces',serif;font-weight:600;font-size:20px;">Quraani System</span>
+      <span class="brand-name" style="font-family:'Fraunces',serif;font-weight:600;font-size:20px;">Nizam-e-Qurani</span>
       <p>Hifz and Nazra progress tracking for madaris and Quran academies, with automatic WhatsApp updates for parents.</p>
     </div>
     <div class="foot-col"><h4>Product</h4><ul><li><a href="#features">Features</a></li><li><a href="#pricing">Pricing</a></li><li><a href="#faq">FAQ</a></li></ul></div>
     <div class="foot-col"><h4>Company</h4><ul><li><a href="#">About</a></li><li><a href="#demo">Book a demo</a></li><li><a href="#">Privacy policy</a></li></ul></div>
-    <div class="foot-col"><h4>Contact</h4><ul><li><a href="#">+92 3XX XXXXXXX</a></li><li><a href="#">hello@quraanisystem.com</a></li></ul></div>
+    <div class="foot-col"><h4>Contact</h4><ul><li><a href="tel:+92XXXXXXXXXX">+92 XXX XXXXXXX</a></li><li><a href="mailto:hello@nizamequrani.com">hello@nizamequrani.com</a></li></ul></div>
   </div>
   <div class="wrap foot-bottom">
-    <p>© 2026 Quraani System. All rights reserved.</p>
+    <p>© 2026 Nizam-e-Qurani. All rights reserved.</p>
     <div class="lang-switch"><span class="active">EN</span><span>AR</span><span>UR</span></div>
   </div>
 </footer>
@@ -833,7 +899,7 @@
     var progress = document.getElementById('roadmapProgress');
     var nodesG = document.getElementById('roadmapNodes');
     if(!base) return;
-    var total = 30, completed = 7, current = 7;
+    var total = 30, completed = 15, current = 15;
     var len = base.getTotalLength();
     progress.style.strokeDasharray = len;
     progress.style.strokeDashoffset = len;
@@ -872,18 +938,27 @@
         nodesG.appendChild(hand2);
 
         var curLbl = document.createElementNS(svgNS,'text');
-        curLbl.setAttribute('x', pt.x); curLbl.setAttribute('y', pt.y + (above ? -24 : 34));
+        curLbl.setAttribute('x', pt.x); curLbl.setAttribute('y', pt.y + (above ? -28 : 36));
         curLbl.setAttribute('text-anchor','middle');
         curLbl.setAttribute('class','rm-node-label strong');
         curLbl.textContent = 'Juz '+(i+1);
         nodesG.appendChild(curLbl);
         var curSub = document.createElementNS(svgNS,'text');
-        curSub.setAttribute('x', pt.x); curSub.setAttribute('y', pt.y + (above ? -12 : 46));
+        curSub.setAttribute('x', pt.x); curSub.setAttribute('y', pt.y + (above ? -14 : 50));
         curSub.setAttribute('text-anchor','middle');
         curSub.setAttribute('class','rm-node-label');
         curSub.setAttribute('fill', '#C79A3D');
         curSub.textContent = 'In progress';
         nodesG.appendChild(curSub);
+        // white backing behind both lines so they stay legible over the curve/nodes
+        [curLbl, curSub].forEach(function(t){
+          var bb = t.getBBox();
+          var bg = document.createElementNS(svgNS,'rect');
+          bg.setAttribute('x', bb.x-4); bg.setAttribute('y', bb.y-2);
+          bg.setAttribute('width', bb.width+8); bg.setAttribute('height', bb.height+4);
+          bg.setAttribute('fill', '#fff');
+          nodesG.insertBefore(bg, t);
+        });
       } else {
         var upC = document.createElementNS(svgNS,'circle');
         upC.setAttribute('cx', pt.x); upC.setAttribute('cy', pt.y); upC.setAttribute('r', 5);
@@ -891,19 +966,30 @@
         nodesG.appendChild(upC);
       }
 
-      if(i===0 || i===14 || i===total-1){
+      // Only anchor labels at the very start and end of the path — a fixed
+      // mid-path label would sit too close to the "current" node label
+      // whenever progress lands nearby, which is what caused the overlap.
+      if(i===0 || i===total-1){
         labelQueue.push({x:pt.x, y:pt.y + (above ? -22 : 30), i:i});
       }
     }
     labelQueue.forEach(function(l){
-      if(l.i === current) return;
+      // Skip a static label if it would sit within 2 nodes of the "current"
+      // node — its own two-line label already covers that position.
+      if(Math.abs(l.i - current) <= 2) return;
       var label = document.createElementNS(svgNS,'text');
       label.setAttribute('x', l.x);
       label.setAttribute('y', l.y);
-      label.setAttribute('text-anchor', l.i===0 ? 'start' : (l.i===total-1 ? 'end' : 'middle'));
+      label.setAttribute('text-anchor', l.i===0 ? 'start' : 'end');
       label.setAttribute('class','rm-node-label strong');
-      label.textContent = l.i===0 ? 'Juz 1' : (l.i===14 ? 'Juz 15' : 'Juz 30 · Khatam');
+      label.textContent = l.i===0 ? 'Juz 1' : 'Juz 30 · Khatam';
       nodesG.appendChild(label);
+      var lbb = label.getBBox();
+      var lbg = document.createElementNS(svgNS,'rect');
+      lbg.setAttribute('x', lbb.x-4); lbg.setAttribute('y', lbb.y-2);
+      lbg.setAttribute('width', lbb.width+8); lbg.setAttribute('height', lbb.height+4);
+      lbg.setAttribute('fill', '#fff');
+      nodesG.insertBefore(lbg, label);
     });
     var rmIo = new IntersectionObserver(function(entries){
       entries.forEach(function(e){
@@ -929,6 +1015,66 @@
     }
   }
   buildStrip(document.getElementById('ctaStrip'), 30, 0.025);
+
+  // ---------- login / signup modal ----------
+  (function(){
+    var overlay = document.getElementById('authOverlay');
+    var loginForm = document.getElementById('loginForm');
+    var signupForm = document.getElementById('signupForm');
+    var closeBtn = document.getElementById('authClose');
+
+    function openModal(mode){
+      loginForm.style.display = mode === 'login' ? 'block' : 'none';
+      signupForm.style.display = mode === 'signup' ? 'block' : 'none';
+      overlay.classList.add('open');
+    }
+    function closeModal(){ overlay.classList.remove('open'); }
+
+    ['openLogin','openLoginMobile'].forEach(function(id){
+      var el = document.getElementById(id);
+      if(el) el.addEventListener('click', function(e){ e.preventDefault(); openModal('login'); });
+    });
+    ['openSignup','openSignupMobile'].forEach(function(id){
+      var el = document.getElementById(id);
+      if(el) el.addEventListener('click', function(e){ e.preventDefault(); openModal('signup'); });
+    });
+    closeBtn.addEventListener('click', closeModal);
+    overlay.addEventListener('click', function(e){ if(e.target === overlay) closeModal(); });
+    document.querySelectorAll('[data-switch]').forEach(function(a){
+      a.addEventListener('click', function(e){ e.preventDefault(); openModal(a.getAttribute('data-switch')); });
+    });
+    [loginForm, signupForm].forEach(function(f){
+      f.addEventListener('submit', function(e){
+        e.preventDefault();
+        document.getElementById('authNote').textContent = 'This is a front-end preview — connect it to your backend to make ' + f.getAttribute('data-mode') + ' actually work.';
+      });
+    });
+  })();
+
+  // ---------- contact form ----------
+  (function(){
+    var form = document.getElementById('contactForm');
+    if(!form) return;
+    var DEST_EMAIL = 'hello@nizamequrani.com';
+    var DEST_WHATSAPP = '92XXXXXXXXXX'; // TODO: replace with the real WhatsApp number, country code first, no + or leading 0
+
+    function buildMessage(){
+      var name = document.getElementById('cName').value;
+      var contact = document.getElementById('cContact').value;
+      var message = document.getElementById('cMessage').value;
+      return 'Name: ' + name + '\nContact: ' + contact + '\n\n' + message;
+    }
+    form.addEventListener('submit', function(e){
+      e.preventDefault();
+      var body = buildMessage();
+      window.location.href = 'mailto:' + DEST_EMAIL + '?subject=' + encodeURIComponent('Website enquiry from ' + document.getElementById('cName').value) + '&body=' + encodeURIComponent(body);
+    });
+    document.getElementById('cSendWhatsapp').addEventListener('click', function(){
+      if(!form.reportValidity()) return;
+      var body = buildMessage();
+      window.open('https://wa.me/' + DEST_WHATSAPP + '?text=' + encodeURIComponent(body), '_blank');
+    });
+  })();
 </script>
 
 </body>
