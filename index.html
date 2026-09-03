@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Nizam-e-Qurani — Hifz &amp; Nazra progress tracking for madaris</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Crect width='24' height='24' rx='5' fill='%230A1F16'/%3E%3Cpath fill='%23C79A3D' d='M11.1 4.7c-2.4-1.6-5.2-2.2-7.9-1.7-.7.1-1.2.7-1.2 1.5v11.9c0 .9.8 1.6 1.7 1.4 2.4-.4 4.9.2 7 1.6.2.1.4.2.6.2V5.1c-.1-.2-.1-.3-.2-.4Z'/%3E%3Cpath fill='%23C79A3D' d='M12.9 4.7c2.4-1.6 5.2-2.2 7.9-1.7.7.1 1.2.7 1.2 1.5v11.9c0 .9-.8 1.6-1.7 1.4-2.4-.4-4.9.2-7 1.6-.2.1-.4.2-.6.2V5.1c.1-.2.1-.3.2-.4Z'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -332,6 +333,7 @@
   .plan-label{font-size:14px;font-weight:600;color:var(--on-dark-soft);margin-bottom:12px;}
   .plan-price{font-family:'Fraunces',serif;font-size:40px;font-weight:600;color:var(--on-dark);}
   .plan-price span{font-family:'Inter',sans-serif;font-size:14.5px;color:var(--on-dark-soft);font-weight:400;}
+  .plan-price .strike{font-family:'Inter',sans-serif;font-size:16px;color:var(--on-dark-soft);font-weight:500;text-decoration:line-through;margin-left:8px;}
   .plan-card ul{margin-top:28px;display:flex;flex-direction:column;gap:15px;}
   .plan-card li{display:flex;align-items:center;gap:11px;font-size:14.5px;color:var(--on-dark-soft);}
   .plan-card li svg{width:17px;height:17px;color:var(--gold);flex:none;}
@@ -443,7 +445,7 @@
     <div class="nav-actions">
       <a href="#" class="btn btn-ghost" id="openLogin">Log in</a>
       <a href="#" class="btn btn-ghost" id="openSignup">Sign up</a>
-      <a href="#demo" class="btn btn-primary">Book a demo</a>
+      <a href="#demo" class="btn btn-primary">Subscribe</a>
     </div>
     <button class="menu-toggle" id="menuToggle" aria-label="Menu"><span></span><span></span><span></span></button>
   </nav>
@@ -454,7 +456,7 @@
   <a href="#pricing">Pricing</a>
   <a href="#faq">FAQ</a>
   <a href="#contact">Contact</a>
-  <a href="#demo" class="btn btn-primary btn-lg" style="margin-top:10px;width:fit-content;">Book a demo</a>
+  <a href="#demo" class="btn btn-primary btn-lg" style="margin-top:10px;width:fit-content;">Subscribe</a>
   <a href="#" class="btn btn-ghost btn-lg" id="openLoginMobile" style="width:fit-content;">Log in</a>
   <a href="#" class="btn btn-ghost btn-lg" id="openSignupMobile" style="width:fit-content;">Sign up</a>
 </div>
@@ -495,7 +497,7 @@
       <h1 class="reveal reveal-d1">Track every juz.<br>Update every parent.</h1>
       <p class="lede reveal reveal-d2">Nizam-e-Qurani gives your madrasa a daily record of every student's Hifz and Nazra progress — and sends parents the update on WhatsApp automatically.</p>
       <div class="hero-ctas reveal reveal-d3">
-        <a href="#demo" class="btn btn-primary btn-lg">Book a free demo</a>
+        <a href="#demo" class="btn btn-primary btn-lg">Subscribe now</a>
         <a href="#how" class="btn btn-ghost btn-lg">See how it works</a>
       </div>
       <p class="hero-note reveal reveal-d3">
@@ -735,33 +737,35 @@
 <section id="pricing" class="dark-section">
   <div class="wrap">
     <div class="section-head reveal">
-      <h2>Simple, per-student pricing</h2>
-      <p>Pay for what your madrasa actually has enrolled — nothing more.</p>
+      <h2>Simple, Transparent Pricing</h2>
+      <p>Choose the plan that fits your program — switch or cancel any time.</p>
     </div>
     <div class="pricing-grid">
       <div class="plan-card reveal reveal-d1">
         <div class="plan-label">Monthly</div>
-        <div class="plan-price">Rs. 200 <span>/ student / mo</span></div>
+        <div class="plan-price">PKR 5,000 <span>/ month</span></div>
         <ul>
           <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M20 6 9 17l-5-5"/></svg>Full feature access</li>
           <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M20 6 9 17l-5-5"/></svg>Automatic WhatsApp updates</li>
           <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M20 6 9 17l-5-5"/></svg>Cancel any time</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M20 6 9 17l-5-5"/></svg>Email &amp; WhatsApp support</li>
         </ul>
-        <a href="#demo" class="btn btn-ghost" style="border-color:var(--line-dark);color:var(--on-dark);">Book a demo</a>
+        <a href="#demo" class="btn btn-ghost" style="border-color:var(--line-dark);color:var(--on-dark);">Subscribe</a>
       </div>
       <div class="plan-card featured reveal reveal-d2">
-        <span class="plan-badge">2 months free</span>
+        <span class="plan-badge">Save 20%</span>
         <div class="plan-label">Annual</div>
-        <div class="plan-price">Rs. 2,000 <span>/ student / yr</span></div>
+        <div class="plan-price">PKR 48,000 <span>/ year</span><span class="strike">PKR 60,000</span></div>
         <ul>
           <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M20 6 9 17l-5-5"/></svg>Everything in Monthly</li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M20 6 9 17l-5-5"/></svg>Matches your academic year</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M20 6 9 17l-5-5"/></svg>Save PKR 12,000 every year</li>
           <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M20 6 9 17l-5-5"/></svg>Priority support</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M20 6 9 17l-5-5"/></svg>Free bulk student data import</li>
         </ul>
-        <a href="#demo" class="btn btn-on-dark">Book a demo</a>
+        <a href="#demo" class="btn btn-on-dark">Subscribe</a>
       </div>
     </div>
-    <p class="pricing-note">Volume discounts available for larger madaris — book a demo and we'll work out what fits your program.</p>
+    <p class="pricing-note">Prices in Pakistani Rupees. Volume-based discounts available for larger programs — contact us for a custom quote.</p>
   </div>
 </section>
 
@@ -817,8 +821,8 @@
 <section class="cta-band" id="demo">
   <div class="wrap">
     <h2 class="reveal">Give your madrasa a system parents can feel.</h2>
-    <p class="reveal reveal-d1">Book a free demo — see it running with your own students in fifteen minutes.</p>
-    <a href="#" class="btn btn-on-dark btn-lg reveal reveal-d2">Book your free demo</a>
+    <p class="reveal reveal-d1">Subscribe today and get your own students up and running in fifteen minutes.</p>
+    <a href="#pricing" class="btn btn-on-dark btn-lg reveal reveal-d2">Subscribe now</a>
     <div class="cta-strip reveal reveal-d3"><div class="juz-strip" id="ctaStrip"></div></div>
   </div>
 </section>
@@ -830,7 +834,7 @@
       <p>Hifz and Nazra progress tracking for madaris and Quran academies, with automatic WhatsApp updates for parents.</p>
     </div>
     <div class="foot-col"><h4>Product</h4><ul><li><a href="#features">Features</a></li><li><a href="#pricing">Pricing</a></li><li><a href="#faq">FAQ</a></li></ul></div>
-    <div class="foot-col"><h4>Company</h4><ul><li><a href="#">About</a></li><li><a href="#demo">Book a demo</a></li><li><a href="#">Privacy policy</a></li></ul></div>
+    <div class="foot-col"><h4>Company</h4><ul><li><a href="#">About</a></li><li><a href="#demo">Subscribe</a></li><li><a href="#">Privacy policy</a></li></ul></div>
     <div class="foot-col"><h4>Contact</h4><ul><li><a href="tel:+92XXXXXXXXXX">+92 XXX XXXXXXX</a></li><li><a href="mailto:hello@nizamequrani.com">hello@nizamequrani.com</a></li></ul></div>
   </div>
   <div class="wrap foot-bottom">
