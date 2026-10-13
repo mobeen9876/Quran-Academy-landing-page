@@ -29,7 +29,7 @@ const PlusIcon = () => (
 
 export default function FAQ() {
   return (
-    <section id="faq">
+    <section id="faq" style={{ paddingTop: '56px' }}>
       <div className="wrap">
         <div className="section-head reveal"><h2>Questions, answered</h2></div>
         <div className="faq">

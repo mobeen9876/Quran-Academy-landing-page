@@ -33,7 +33,7 @@ const StarIcon = () => (
 
 export default function Testimonials() {
   return (
-    <section>
+    <section style={{ paddingBottom: '56px' }}>
       <div className="wrap">
         <div className="section-head reveal">
           <h2>What madaris are saying</h2>
