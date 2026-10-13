@@ -2,7 +2,6 @@ const faqs = [
   {
     q: 'Do we need technical staff to set this up?',
     a: 'No. Any teacher can learn the day-to-day use in about five minutes. We handle the initial setup with you, including importing your existing student list.',
-    open: true,
   },
   {
     q: 'How long does setup take?',
@@ -35,7 +34,7 @@ export default function FAQ() {
         <div className="section-head reveal"><h2>Questions, answered</h2></div>
         <div className="faq">
           {faqs.map((f, i) => (
-            <details key={i} open={f.open || undefined}>
+            <details key={i}>
               <summary>
                 {f.q}
                 <span className="plus"><PlusIcon /></span>
