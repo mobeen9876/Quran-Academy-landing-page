@@ -9,7 +9,6 @@ import Roadmap from './components/Roadmap'
 import Screens from './components/Screens'
 import Testimonials from './components/Testimonials'
 import FAQ from './components/FAQ'
-import Contact from './components/Contact'
 import CTABand from './components/CTABand'
 import Footer from './components/Footer'
 
@@ -52,7 +51,6 @@ export default function App() {
         <Screens />
         <Testimonials />
         <FAQ />
-        <Contact />
         <CTABand />
       </main>
 

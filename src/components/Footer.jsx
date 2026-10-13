@@ -12,7 +12,7 @@ export default function Footer() {
 
   return (
     <footer>
-      <div className="wrap foot-grid">
+      <div className="wrap foot-grid" style={{ gridTemplateColumns: '1.5fr 1fr 1fr' }}>
         <div className="foot-brand">
           <div style={{ display: 'flex', alignItems: 'center', gap: 9 }}>
             <span style={{ width: 30, height: 30, borderRadius: 8, background: 'var(--dark)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>

@@ -38,7 +38,6 @@ export default function Navbar({ onOpenLogin, onOpenSignup }) {
             <li><a href="#features">Features</a></li>
             <li><a href="#how">How it works</a></li>
             <li><a href="#faq">FAQ</a></li>
-            <li><a href="#contact">Contact</a></li>
           </ul>
 
           <div className="nav-actions">
@@ -62,7 +61,6 @@ export default function Navbar({ onOpenLogin, onOpenSignup }) {
         <a href="#features" onClick={closePanel}>Features</a>
         <a href="#how" onClick={closePanel}>How it works</a>
         <a href="#faq" onClick={closePanel}>FAQ</a>
-        <a href="#contact" onClick={closePanel}>Contact</a>
         <a href="#demo" className="btn btn-primary btn-lg" style={{ marginTop: 10, width: 'fit-content' }} onClick={closePanel}>Subscribe</a>
         <button className="btn btn-ghost btn-lg" style={{ width: 'fit-content' }} onClick={() => { closePanel(); onOpenLogin(); }}>Log in</button>
         <button className="btn btn-ghost btn-lg" style={{ width: 'fit-content' }} onClick={() => { closePanel(); onOpenSignup(); }}>Sign up</button>
