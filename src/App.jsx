@@ -8,7 +8,6 @@ import Roles from './components/Roles'
 import Roadmap from './components/Roadmap'
 import Screens from './components/Screens'
 import Testimonials from './components/Testimonials'
-import Pricing from './components/Pricing'
 import FAQ from './components/FAQ'
 import Contact from './components/Contact'
 import CTABand from './components/CTABand'
@@ -52,7 +51,6 @@ export default function App() {
         <Roadmap />
         <Screens />
         <Testimonials />
-        <Pricing />
         <FAQ />
         <Contact />
         <CTABand />

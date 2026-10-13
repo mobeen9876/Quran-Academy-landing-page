@@ -44,10 +44,6 @@ export default function Hero() {
       <div className="wrap hero-grid">
         {/* --- copy side --- */}
         <div>
-          <div className="eyebrow-badge reveal">
-            <span className="dot" />
-            Now live for madaris in Pakistan &amp; the Gulf
-          </div>
           <h1 className="reveal reveal-d1">Track every juz.<br />Update every parent.</h1>
           <p className="lede reveal reveal-d2">
             Nizam-e-Qurani gives your madrasa a daily record of every student's Hifz and Nazra

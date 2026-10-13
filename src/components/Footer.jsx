@@ -27,7 +27,6 @@ export default function Footer() {
           <h4>Product</h4>
           <ul>
             <li><a href="#features">Features</a></li>
-            <li><a href="#pricing">Pricing</a></li>
             <li><a href="#faq">FAQ</a></li>
           </ul>
         </div>
@@ -38,14 +37,6 @@ export default function Footer() {
             <li><a href="#">About</a></li>
             <li><a href="#demo">Subscribe</a></li>
             <li><a href="#">Privacy policy</a></li>
-          </ul>
-        </div>
-
-        <div className="foot-col">
-          <h4>Contact</h4>
-          <ul>
-            <li><a href="tel:+92XXXXXXXXXX">+92 XXX XXXXXXX</a></li>
-            <li><a href="mailto:hello@nizamequrani.com">hello@nizamequrani.com</a></li>
           </ul>
         </div>
       </div>

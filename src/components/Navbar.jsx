@@ -37,7 +37,6 @@ export default function Navbar({ onOpenLogin, onOpenSignup }) {
           <ul className="nav-links">
             <li><a href="#features">Features</a></li>
             <li><a href="#how">How it works</a></li>
-            <li><a href="#pricing">Pricing</a></li>
             <li><a href="#faq">FAQ</a></li>
             <li><a href="#contact">Contact</a></li>
           </ul>
@@ -62,7 +61,6 @@ export default function Navbar({ onOpenLogin, onOpenSignup }) {
       <div className={`mobile-panel${mobileOpen ? ' open' : ''}`}>
         <a href="#features" onClick={closePanel}>Features</a>
         <a href="#how" onClick={closePanel}>How it works</a>
-        <a href="#pricing" onClick={closePanel}>Pricing</a>
         <a href="#faq" onClick={closePanel}>FAQ</a>
         <a href="#contact" onClick={closePanel}>Contact</a>
         <a href="#demo" className="btn btn-primary btn-lg" style={{ marginTop: 10, width: 'fit-content' }} onClick={closePanel}>Subscribe</a>
