@@ -18,11 +18,12 @@ const steps = [
 
 export default function HowItWorks() {
   return (
-    <section id="how">
+    <section id="how" className="pale-section">
       <div className="wrap">
         <div className="section-head reveal">
-          <h2>How it works</h2>
-          <p>Three steps, repeated every day your madrasa is open.</p>
+          <span className="overline">How it works</span>
+          <h2>Three steps, every day.</h2>
+          <p>Simple enough for every teacher. Powerful enough for the whole madrasa.</p>
         </div>
         <div className="steps-grid">
           {steps.map((s, i) => (

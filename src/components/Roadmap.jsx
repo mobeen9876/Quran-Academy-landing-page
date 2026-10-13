@@ -1,89 +1,82 @@
 import { useEffect, useRef } from 'react'
 
-const TOTAL = 30
-const COMPLETED = 15
-const CURRENT = 15
+const TOTAL = 30, COMPLETED = 15, CURRENT = 15
 
 export default function Roadmap() {
-  const svgRef = useRef(null)
-  const baseRef = useRef(null)
+  const svgRef      = useRef(null)
+  const baseRef     = useRef(null)
   const progressRef = useRef(null)
-  const nodesRef = useRef(null)
+  const nodesRef    = useRef(null)
 
   useEffect(() => {
-    const base = baseRef.current
-    const progress = progressRef.current
-    const nodesG = nodesRef.current
+    const base = baseRef.current, progress = progressRef.current, nodesG = nodesRef.current
     if (!base || !progress || !nodesG) return
 
     const svgNS = 'http://www.w3.org/2000/svg'
-    const len = base.getTotalLength()
-    progress.style.strokeDasharray = len
+    const len   = base.getTotalLength()
+    progress.style.strokeDasharray  = len
     progress.style.strokeDashoffset = len
 
-    // clear any previous nodes (React StrictMode double-effect)
     while (nodesG.firstChild) nodesG.removeChild(nodesG.firstChild)
 
     const labelQueue = []
 
     for (let i = 0; i < TOTAL; i++) {
-      const frac = i / (TOTAL - 1)
-      const pt = base.getPointAtLength(frac * len)
+      const frac  = i / (TOTAL - 1)
+      const pt    = base.getPointAtLength(frac * len)
       const above = Math.floor(i / 2) % 2 === 0
 
       if (i < COMPLETED) {
-        const doneC = document.createElementNS(svgNS, 'circle')
-        doneC.setAttribute('cx', pt.x); doneC.setAttribute('cy', pt.y); doneC.setAttribute('r', 7)
-        doneC.setAttribute('fill', '#12A86B'); doneC.setAttribute('stroke', '#fff'); doneC.setAttribute('stroke-width', 1.5)
-        nodesG.appendChild(doneC)
-
+        const c = document.createElementNS(svgNS, 'circle')
+        c.setAttribute('cx', pt.x); c.setAttribute('cy', pt.y); c.setAttribute('r', 7)
+        c.setAttribute('fill', '#11A367'); c.setAttribute('stroke', '#fff'); c.setAttribute('stroke-width', 1.5)
+        nodesG.appendChild(c)
         const chk = document.createElementNS(svgNS, 'path')
-        chk.setAttribute('d', `M${pt.x - 3},${pt.y} l2,2.2 l4.2,-4.4`)
-        chk.setAttribute('stroke', '#fff'); chk.setAttribute('stroke-width', 1.6)
-        chk.setAttribute('fill', 'none'); chk.setAttribute('stroke-linecap', 'round'); chk.setAttribute('stroke-linejoin', 'round')
+        chk.setAttribute('d', `M${pt.x-3},${pt.y} l2,2.2 l4.2,-4.4`)
+        chk.setAttribute('stroke','#fff'); chk.setAttribute('stroke-width',1.6)
+        chk.setAttribute('fill','none'); chk.setAttribute('stroke-linecap','round'); chk.setAttribute('stroke-linejoin','round')
         nodesG.appendChild(chk)
+
       } else if (i === CURRENT) {
-        const curC = document.createElementNS(svgNS, 'circle')
-        curC.setAttribute('cx', pt.x); curC.setAttribute('cy', pt.y); curC.setAttribute('r', 11)
-        curC.setAttribute('fill', '#C79A3D'); curC.setAttribute('stroke', '#fff'); curC.setAttribute('stroke-width', 1.5)
-        curC.classList.add('rm-pulse')
-        nodesG.appendChild(curC)
+        const c = document.createElementNS(svgNS, 'circle')
+        c.setAttribute('cx', pt.x); c.setAttribute('cy', pt.y); c.setAttribute('r', 11)
+        c.setAttribute('fill', '#C2913A'); c.setAttribute('stroke', '#fff'); c.setAttribute('stroke-width', 2)
+        c.classList.add('rm-pulse')
+        nodesG.appendChild(c)
+        const h1 = document.createElementNS(svgNS, 'line')
+        h1.setAttribute('x1',pt.x); h1.setAttribute('y1',pt.y); h1.setAttribute('x2',pt.x); h1.setAttribute('y2',pt.y-5)
+        h1.setAttribute('stroke','#fff'); h1.setAttribute('stroke-width',1.6); h1.setAttribute('stroke-linecap','round')
+        nodesG.appendChild(h1)
+        const h2 = document.createElementNS(svgNS, 'line')
+        h2.setAttribute('x1',pt.x); h2.setAttribute('y1',pt.y); h2.setAttribute('x2',pt.x+4); h2.setAttribute('y2',pt.y+1)
+        h2.setAttribute('stroke','#fff'); h2.setAttribute('stroke-width',1.6); h2.setAttribute('stroke-linecap','round')
+        nodesG.appendChild(h2)
 
-        const hand1 = document.createElementNS(svgNS, 'line')
-        hand1.setAttribute('x1', pt.x); hand1.setAttribute('y1', pt.y); hand1.setAttribute('x2', pt.x); hand1.setAttribute('y2', pt.y - 5)
-        hand1.setAttribute('stroke', '#fff'); hand1.setAttribute('stroke-width', 1.6); hand1.setAttribute('stroke-linecap', 'round')
-        nodesG.appendChild(hand1)
+        const lbl = document.createElementNS(svgNS, 'text')
+        lbl.setAttribute('x', pt.x); lbl.setAttribute('y', pt.y + (above ? -28 : 36))
+        lbl.setAttribute('text-anchor','middle'); lbl.setAttribute('class','rm-node-label strong')
+        lbl.textContent = `Juz ${i + 1}`
+        nodesG.appendChild(lbl)
+        const sub = document.createElementNS(svgNS, 'text')
+        sub.setAttribute('x', pt.x); sub.setAttribute('y', pt.y + (above ? -14 : 50))
+        sub.setAttribute('text-anchor','middle'); sub.setAttribute('class','rm-node-label')
+        sub.setAttribute('fill','#C2913A'); sub.textContent = 'In progress'
+        nodesG.appendChild(sub)
 
-        const hand2 = document.createElementNS(svgNS, 'line')
-        hand2.setAttribute('x1', pt.x); hand2.setAttribute('y1', pt.y); hand2.setAttribute('x2', pt.x + 4); hand2.setAttribute('y2', pt.y + 1)
-        hand2.setAttribute('stroke', '#fff'); hand2.setAttribute('stroke-width', 1.6); hand2.setAttribute('stroke-linecap', 'round')
-        nodesG.appendChild(hand2)
-
-        const curLbl = document.createElementNS(svgNS, 'text')
-        curLbl.setAttribute('x', pt.x); curLbl.setAttribute('y', pt.y + (above ? -28 : 36))
-        curLbl.setAttribute('text-anchor', 'middle'); curLbl.setAttribute('class', 'rm-node-label strong')
-        curLbl.textContent = `Juz ${i + 1}`
-        nodesG.appendChild(curLbl)
-
-        const curSub = document.createElementNS(svgNS, 'text')
-        curSub.setAttribute('x', pt.x); curSub.setAttribute('y', pt.y + (above ? -14 : 50))
-        curSub.setAttribute('text-anchor', 'middle'); curSub.setAttribute('class', 'rm-node-label')
-        curSub.setAttribute('fill', '#C79A3D'); curSub.textContent = 'In progress'
-        nodesG.appendChild(curSub)
-
-        ;[curLbl, curSub].forEach(t => {
+        ;[lbl, sub].forEach(t => {
           const bb = t.getBBox()
           const bg = document.createElementNS(svgNS, 'rect')
-          bg.setAttribute('x', bb.x - 4); bg.setAttribute('y', bb.y - 2)
-          bg.setAttribute('width', bb.width + 8); bg.setAttribute('height', bb.height + 4)
-          bg.setAttribute('fill', '#fff')
+          bg.setAttribute('x', bb.x-5); bg.setAttribute('y', bb.y-3)
+          bg.setAttribute('width', bb.width+10); bg.setAttribute('height', bb.height+6)
+          bg.setAttribute('fill', '#fff'); bg.setAttribute('rx', 3)
           nodesG.insertBefore(bg, t)
         })
+
       } else {
-        const upC = document.createElementNS(svgNS, 'circle')
-        upC.setAttribute('cx', pt.x); upC.setAttribute('cy', pt.y); upC.setAttribute('r', 5)
-        upC.setAttribute('fill', '#EFF3EF'); upC.setAttribute('stroke', '#fff'); upC.setAttribute('stroke-width', 1.5)
-        nodesG.appendChild(upC)
+        const c = document.createElementNS(svgNS, 'circle')
+        c.setAttribute('cx', pt.x); c.setAttribute('cy', pt.y); c.setAttribute('r', 5)
+        c.setAttribute('fill', '#EDF1EC'); c.setAttribute('stroke', '#fff'); c.setAttribute('stroke-width', 1.5)
+        nodesG.appendChild(c)
       }
 
       if (i === 0 || i === TOTAL - 1) {
@@ -101,33 +94,33 @@ export default function Roadmap() {
       nodesG.appendChild(label)
       const lbb = label.getBBox()
       const lbg = document.createElementNS(svgNS, 'rect')
-      lbg.setAttribute('x', lbb.x - 4); lbg.setAttribute('y', lbb.y - 2)
-      lbg.setAttribute('width', lbb.width + 8); lbg.setAttribute('height', lbb.height + 4)
-      lbg.setAttribute('fill', '#fff')
+      lbg.setAttribute('x', lbb.x-5); lbg.setAttribute('y', lbb.y-3)
+      lbg.setAttribute('width', lbb.width+10); lbg.setAttribute('height', lbb.height+6)
+      lbg.setAttribute('fill', '#fff'); lbg.setAttribute('rx', 3)
       nodesG.insertBefore(lbg, label)
     })
 
-    const io = new IntersectionObserver((entries) => {
+    const io = new IntersectionObserver(entries => {
       entries.forEach(e => {
         if (e.isIntersecting) {
-          progress.style.transition = 'stroke-dashoffset 1.6s cubic-bezier(.16,.84,.44,1)'
+          progress.style.transition = 'stroke-dashoffset 1.8s cubic-bezier(.16,.84,.44,1)'
           progress.style.strokeDashoffset = len * (1 - COMPLETED / (TOTAL - 1))
           io.unobserve(e.target)
         }
       })
     }, { threshold: 0.3 })
     io.observe(svgRef.current)
-
     return () => io.disconnect()
   }, [])
 
   const pathD = "M20,140 C120,40 180,180 280,110 C380,40 440,180 540,110 C640,40 700,180 800,110 C860,60 900,120 980,90"
 
   return (
-    <section id="roadmap">
+    <section id="roadmap" className="pale-section">
       <div className="wrap">
         <div className="section-head reveal">
-          <h2>See the Road Map</h2>
+          <span className="overline">Student progress</span>
+          <h2>See the Road Map.</h2>
           <p>Every student's Quran, laid out as a single path — from Juz 1 to Khatam.</p>
         </div>
         <div className="roadmap-card reveal">
@@ -137,11 +130,11 @@ export default function Roadmap() {
             <div className="item"><span className="sw upcoming" />Upcoming</div>
           </div>
           <div className="roadmap-scroll">
-            <svg ref={svgRef} id="roadmapSvg" viewBox="0 0 1000 200" style={{ overflow: 'visible' }}>
+            <svg ref={svgRef} viewBox="0 0 1000 200" style={{ overflow:'visible' }}>
               <path ref={baseRef} d={pathD}
-                fill="none" stroke="#EFF3EF" strokeWidth="5" strokeLinecap="round" strokeDasharray="1 11" />
+                fill="none" stroke="#EDF1EC" strokeWidth="5" strokeLinecap="round" strokeDasharray="1 11" />
               <path ref={progressRef} d={pathD}
-                fill="none" stroke="#12A86B" strokeWidth="5" strokeLinecap="round" />
+                fill="none" stroke="#11A367" strokeWidth="5" strokeLinecap="round" />
               <g ref={nodesRef} />
             </svg>
           </div>

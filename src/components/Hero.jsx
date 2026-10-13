@@ -2,7 +2,7 @@ import { useEffect, useRef } from 'react'
 
 function animateCount(el, target, suffix) {
   let startTime = null
-  const dur = 1400
+  const dur = 1600
   function step(ts) {
     if (!startTime) startTime = ts
     const progress = Math.min((ts - startTime) / dur, 1)
@@ -14,9 +14,9 @@ function animateCount(el, target, suffix) {
 }
 
 const statTargets = [
-  { id: 'statMadaris', val: 12, suffix: '+' },
+  { id: 'statMadaris', val: 12,  suffix: '+' },
   { id: 'statStudents', val: 850, suffix: '+' },
-  { id: 'statUpdates', val: 9, suffix: 'k+' },
+  { id: 'statUpdates',  val: 9,   suffix: 'k+' },
 ]
 
 export default function Hero() {
@@ -24,10 +24,10 @@ export default function Hero() {
 
   useEffect(() => {
     if (!statRowRef.current) return
-    const io = new IntersectionObserver((entries) => {
-      entries.forEach((e) => {
+    const io = new IntersectionObserver(entries => {
+      entries.forEach(e => {
         if (e.isIntersecting) {
-          statTargets.forEach((s) => {
+          statTargets.forEach(s => {
             const el = document.getElementById(s.id)
             if (el) animateCount(el, s.val, s.suffix)
           })
@@ -42,32 +42,52 @@ export default function Hero() {
   return (
     <section className="hero">
       <div className="wrap hero-grid">
-        {/* --- copy side --- */}
+
+        {/* ── copy ── */}
         <div>
-          <h1 className="reveal reveal-d1">Track every juz.<br />Update every parent.</h1>
-          <p className="lede reveal reveal-d2">
-            Nizam-e-Qurani gives your madrasa a daily record of every student's Hifz and Nazra
-            progress — and sends parents the update on WhatsApp automatically.
+          <h1 className="reveal">
+            Track every juz.<br />
+            <em>Update every parent.</em>
+          </h1>
+
+          <p className="lede reveal reveal-d1">
+            Nizam-e-Qurani gives your madrasa a daily record of every student's
+            Hifz and Nazra progress — and sends parents the update on WhatsApp
+            automatically.
           </p>
-          <div className="hero-ctas reveal reveal-d3">
+
+          <div className="hero-ctas reveal reveal-d2">
             <a href="#demo" className="btn btn-primary btn-lg">Subscribe now</a>
-            <a href="#how" className="btn btn-ghost btn-lg">See how it works</a>
+            <a href="#how"  className="btn btn-ghost  btn-lg">See how it works</a>
           </div>
-          <p className="hero-note reveal reveal-d3">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round">
+
+          <p className="hero-note reveal reveal-d2">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round">
               <path d="M20 6 9 17l-5-5"/>
             </svg>
             No credit card required · Free for 7 days
           </p>
-          <div className="stat-row reveal reveal-d4" ref={statRowRef}>
-            <div className="stat"><b id="statMadaris">0</b><span>Madaris onboard</span></div>
-            <div className="stat"><b id="statStudents">0</b><span>Students tracked</span></div>
-            <div className="stat"><b id="statUpdates">0</b><span>WhatsApp updates / month</span></div>
+
+          <div className="stat-row reveal reveal-d3" ref={statRowRef}>
+            <div className="stat">
+              <b id="statMadaris">0</b>
+              <span>Madaris onboard</span>
+            </div>
+            <div className="stat-divider" />
+            <div className="stat">
+              <b id="statStudents">0</b>
+              <span>Students tracked</span>
+            </div>
+            <div className="stat-divider" />
+            <div className="stat">
+              <b id="statUpdates">0</b>
+              <span>WhatsApp updates / mo</span>
+            </div>
           </div>
         </div>
 
-        {/* --- visual side --- */}
-        <div className="hero-visual reveal reveal-d3">
+        {/* ── visual ── */}
+        <div className="hero-visual reveal reveal-d2">
           <div className="phone">
             <div className="phone-inner">
               <div className="phone-head">
@@ -79,9 +99,10 @@ export default function Hero() {
               </div>
               <div className="phone-body">
                 <div className="bubble">
-                  Assalam-o-Alaikum! <strong>Ali</strong> completed today's sabaq — Surah Al-Baqarah,
-                  ayah 40–45. Revision: Juz 3. Result: <strong>Excellent.</strong>
-                  <span className="t">5:42 PM · Sent by Ustaz Kareem</span>
+                  Assalam-o-Alaikum! <strong>Ali</strong> completed today's
+                  sabaq — Surah Al-Baqarah, ayah 40–45. Revision: Juz&nbsp;3.
+                  Result: <strong>Excellent.</strong>
+                  <span className="t">5:42 PM · Ustaz Kareem</span>
                 </div>
                 <div className="bubble">
                   Tomorrow's portion has been added to Ali's Road Map.
@@ -93,7 +114,7 @@ export default function Hero() {
 
           <div className="float-badge">
             <div className="ic">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
                 <path d="M12 2v20M2 12h20"/>
               </svg>
             </div>
@@ -103,6 +124,7 @@ export default function Hero() {
             </div>
           </div>
         </div>
+
       </div>
     </section>
   )

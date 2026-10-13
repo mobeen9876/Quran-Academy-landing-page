@@ -25,7 +25,7 @@ const testimonials = [
   },
 ]
 
-const StarIcon = () => (
+const Star = () => (
   <svg viewBox="0 0 24 24" fill="currentColor">
     <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
   </svg>
@@ -36,19 +36,23 @@ export default function Testimonials() {
     <section style={{ paddingBottom: '56px' }}>
       <div className="wrap">
         <div className="section-head reveal">
-          <h2>What madaris are saying</h2>
+          <span className="overline">Testimonials</span>
+          <h2>What madaris are saying.</h2>
           <p>Real notes from teachers, parents and administrators using the system day to day.</p>
         </div>
-        <div className="test-grid" style={{ gridTemplateColumns: 'repeat(2,1fr)', maxWidth: 900, margin: '0 auto' }}>
+        <div className="test-grid">
           {testimonials.map((t, i) => (
             <div key={i} className={`test-card reveal reveal-d${i + 1}`}>
               <div className="test-stars">
-                {[...Array(5)].map((_, j) => <StarIcon key={j} />)}
+                {[...Array(5)].map((_, j) => <Star key={j} />)}
               </div>
-              <p className="quote">"{t.quote}"</p>
+              <p className="quote">{t.quote}</p>
               <div className="test-attr">
                 <div className="test-avatar">{t.initials}</div>
-                <div><b>{t.name}</b><span>{t.org}</span></div>
+                <div>
+                  <b>{t.name}</b>
+                  <span>{t.org}</span>
+                </div>
               </div>
             </div>
           ))}

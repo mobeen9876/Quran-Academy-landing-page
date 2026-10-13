@@ -31,13 +31,17 @@ export default function FAQ() {
   return (
     <section id="faq" style={{ paddingTop: '56px' }}>
       <div className="wrap">
-        <div className="section-head reveal"><h2>Questions, answered</h2></div>
+        <div className="section-head reveal">
+          <span className="overline">FAQ</span>
+          <h2>Questions, answered.</h2>
+          <p>Everything you need to know before getting started.</p>
+        </div>
         <div className="faq">
           {faqs.map((f, i) => (
-            <details key={i}>
+            <details key={i} className={`reveal reveal-d${Math.min(i + 1, 5)}`}>
               <summary>
                 {f.q}
-                <span className="plus"><PlusIcon /></span>
+                <span className="faq-icon"><PlusIcon /></span>
               </summary>
               <p>{f.a}</p>
             </details>

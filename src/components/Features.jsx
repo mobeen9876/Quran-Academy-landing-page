@@ -6,7 +6,7 @@ const features = [
       </svg>
     ),
     title: 'Daily roadmap',
-    desc: "Every student gets a day-by-day memorization and revision schedule, generated the moment a plan is assigned.",
+    desc: 'Every student gets a day-by-day memorization and revision schedule, generated the moment a plan is assigned.',
   },
   {
     icon: (
@@ -65,12 +65,14 @@ export default function Features() {
     <section id="features" className="dark-section">
       <div className="wrap">
         <div className="section-head reveal">
+          <span className="overline">Platform features</span>
           <h2>One roadmap, from Qaida to Khatam.</h2>
           <p>Everything your madrasa needs to run Hifz and Nazra classes, in one place.</p>
         </div>
         <div className="feat-grid">
           {features.map((f, i) => (
             <div key={i} className={`feat-card reveal ${delays[i]}`}>
+              <span className="feat-num">0{i + 1}</span>
               <div className="feat-ic">{f.icon}</div>
               <h3>{f.title}</h3>
               <p>{f.desc}</p>
