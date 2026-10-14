@@ -45,29 +45,29 @@ export default function Hero() {
 
         {/* ── copy ── */}
         <div>
-          <h1 className="reveal">
+          <h1 className="hero-enter hero-enter-1">
             Track every juz.<br />
             <em>Update every parent.</em>
           </h1>
 
-          <p className="lede reveal reveal-d1">
+          <p className="lede hero-enter hero-enter-2">
             Nizam-e-Qurani gives your madrasa a daily record of every student's
             Hifz and Nazra progress — and sends parents the update on WhatsApp
             automatically.
           </p>
 
-          <div className="hero-ctas reveal reveal-d2">
+          <div className="hero-ctas hero-enter hero-enter-3">
             <a href="#how" className="btn btn-primary btn-lg">See how it works</a>
           </div>
 
-          <p className="hero-note reveal reveal-d2">
+          <p className="hero-note hero-enter hero-enter-3">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round">
               <path d="M20 6 9 17l-5-5"/>
             </svg>
             No credit card required · Free for 7 days
           </p>
 
-          <div className="stat-row reveal reveal-d3" ref={statRowRef}>
+          <div className="stat-row hero-enter hero-enter-4" ref={statRowRef}>
             <div className="stat">
               <b id="statMadaris">0</b>
               <span>Madaris onboard</span>
@@ -86,7 +86,7 @@ export default function Hero() {
         </div>
 
         {/* ── visual ── */}
-        <div className="hero-visual reveal reveal-d2">
+        <div className="hero-visual hero-enter hero-enter-3">
           <div className="phone">
             <div className="phone-inner">
               <div className="phone-head">

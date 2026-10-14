@@ -25,7 +25,15 @@ export default function Navbar() {
     <>
       <header className={scrolled ? 'scrolled' : ''}>
         <nav>
-          <a href="#" className="brand" onClick={e => { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }) }}>
+          <a href="#"
+            className="brand"
+            onClick={e => {
+              e.preventDefault()
+              document.documentElement.classList.add('scroll-to-top')
+              window.scrollTo({ top: 0, behavior: 'smooth' })
+              setTimeout(() => document.documentElement.classList.remove('scroll-to-top'), 600)
+            }}
+          >
             <span className="brand-mark"><BrandIcon /></span>
             <span className="brand-name">Nizam-e-Qurani</span>
           </a>

@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react'
 import Navbar, { AuthModal } from './components/Navbar'
-import PageLoader from './components/PageLoader'
 import Hero from './components/Hero'
 import LogosMarquee from './components/LogosMarquee'
 import Features from './components/Features'
@@ -39,7 +38,6 @@ export default function App() {
 
   return (
     <>
-      <PageLoader />
       <Navbar onOpenLogin={openLogin} onOpenSignup={openSignup} />
       <AuthModal isOpen={authOpen} mode={authMode} onClose={closeAuth} onSwitch={switchAuth} />
 
