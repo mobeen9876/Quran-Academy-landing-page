@@ -30,7 +30,6 @@ export default function Footer() {
           <ul>
             <li><a href="#features">Features</a></li>
             <li><a href="#faq">FAQ</a></li>
-            <li><a href="#demo">Subscribe</a></li>
           </ul>
         </div>
 

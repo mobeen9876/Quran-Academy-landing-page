@@ -8,7 +8,6 @@ export default function CTABand() {
         <p className="reveal reveal-d1">
           Subscribe today and get your students up and running in fifteen minutes.
         </p>
-        <a href="#" className="btn btn-on-dark btn-lg reveal reveal-d2">Subscribe now</a>
       </div>
     </section>
   )
