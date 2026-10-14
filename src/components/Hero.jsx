@@ -57,8 +57,7 @@ export default function Hero() {
           </p>
 
           <div className="hero-ctas reveal reveal-d2">
-            <a href="#demo" className="btn btn-primary btn-lg">Subscribe now</a>
-            <a href="#how"  className="btn btn-ghost  btn-lg">See how it works</a>
+            <a href="#how" className="btn btn-primary btn-lg">See how it works</a>
           </div>
 
           <p className="hero-note reveal reveal-d2">
