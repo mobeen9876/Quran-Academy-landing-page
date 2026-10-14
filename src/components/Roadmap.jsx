@@ -121,7 +121,7 @@ export default function Roadmap() {
         <div className="section-head reveal">
           <span className="overline">Student progress</span>
           <h2>See the Road Map.</h2>
-          <p>Every student's Quran, laid out as a single path — from Juz 1 to Khatam.</p>
+          <p>Every student's Quran, laid out as a single path — from Juz 1 to Completion.</p>
         </div>
         <div className="roadmap-card reveal">
           <div className="roadmap-legend">
