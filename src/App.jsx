@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useCallback } from 'react'
 import Navbar, { AuthModal } from './components/Navbar'
 import Hero from './components/Hero'
 import LogosMarquee from './components/LogosMarquee'
@@ -13,15 +13,23 @@ import CTABand from './components/CTABand'
 import Footer from './components/Footer'
 
 export default function App() {
-  const [authOpen, setAuthOpen] = useState(false)
-  const [authMode, setAuthMode] = useState('login')
+  const [authOpen, setAuthOpen]   = useState(false)
+  const [authMode, setAuthMode]   = useState('login')
+  const [heroKey,  setHeroKey]    = useState(0)  // bump to replay Hero animations
 
-  const openLogin = () => { setAuthMode('login'); setAuthOpen(true) }
+  const openLogin  = () => { setAuthMode('login');  setAuthOpen(true) }
   const openSignup = () => { setAuthMode('signup'); setAuthOpen(true) }
-  const closeAuth = () => setAuthOpen(false)
+  const closeAuth  = () => setAuthOpen(false)
   const switchAuth = (mode) => setAuthMode(mode)
 
-  // Scroll-reveal: observe all .reveal elements after every render
+  // Called by both Navbar and Footer brand logo clicks
+  const scrollToTop = useCallback(() => {
+    window.scrollTo({ top: 0, behavior: 'smooth' })
+    // After smooth scroll finishes (~600ms), remount Hero to replay animations
+    setTimeout(() => setHeroKey(k => k + 1), 650)
+  }, [])
+
+  // Scroll-reveal for all sections
   useEffect(() => {
     const els = document.querySelectorAll('.reveal:not(.in)')
     const io = new IntersectionObserver((entries) => {
@@ -38,11 +46,11 @@ export default function App() {
 
   return (
     <>
-      <Navbar onOpenLogin={openLogin} onOpenSignup={openSignup} />
+      <Navbar onScrollToTop={scrollToTop} />
       <AuthModal isOpen={authOpen} mode={authMode} onClose={closeAuth} onSwitch={switchAuth} />
 
       <main>
-        <Hero />
+        <Hero key={heroKey} />
         <LogosMarquee />
         <Features />
         <HowItWorks />
@@ -54,7 +62,7 @@ export default function App() {
         <CTABand />
       </main>
 
-      <Footer />
+      <Footer onScrollToTop={scrollToTop} />
     </>
   )
 }

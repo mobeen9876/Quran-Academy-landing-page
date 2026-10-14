@@ -9,7 +9,7 @@ const BrandIcon = () => (
   </svg>
 )
 
-export default function Navbar() {
+export default function Navbar({ onScrollToTop }) {
   const [scrolled, setScrolled] = useState(false)
   const [mobileOpen, setMobileOpen] = useState(false)
 
@@ -27,12 +27,7 @@ export default function Navbar() {
         <nav>
           <a href="#"
             className="brand"
-            onClick={e => {
-              e.preventDefault()
-              document.documentElement.classList.add('scroll-to-top')
-              window.scrollTo({ top: 0, behavior: 'smooth' })
-              setTimeout(() => document.documentElement.classList.remove('scroll-to-top'), 600)
-            }}
+            onClick={e => { e.preventDefault(); onScrollToTop() }}
           >
             <span className="brand-mark"><BrandIcon /></span>
             <span className="brand-name">Nizam-e-Qurani</span>

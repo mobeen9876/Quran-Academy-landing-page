@@ -7,7 +7,7 @@ const BrandIcon = () => (
   </svg>
 )
 
-export default function Footer() {
+export default function Footer({ onScrollToTop }) {
   const [email, setEmail]     = useState('')
   const [submitted, setSubmitted] = useState(false)
 
@@ -22,12 +22,7 @@ export default function Footer() {
 
         {/* brand */}
         <div className="foot-brand">
-          <a href="#" onClick={e => {
-              e.preventDefault()
-              document.documentElement.classList.add('scroll-to-top')
-              window.scrollTo({ top: 0, behavior: 'smooth' })
-              setTimeout(() => document.documentElement.classList.remove('scroll-to-top'), 600)
-            }} style={{ display:'flex', alignItems:'center', gap:10, textDecoration:'none' }}>
+          <a href="#" onClick={e => { e.preventDefault(); onScrollToTop() }} style={{ display:'flex', alignItems:'center', gap:10, textDecoration:'none' }}>
             <span style={{ width:32, height:32, borderRadius:9, background:'var(--dark-2)', border:'1px solid var(--line-dark)', display:'flex', alignItems:'center', justifyContent:'center', flexShrink:0 }}>
               <BrandIcon />
             </span>
