@@ -9,7 +9,7 @@ const BrandIcon = () => (
   </svg>
 )
 
-export default function Navbar({ onScrollToTop }) {
+export default function Navbar({ onScrollToTop = () => window.scrollTo({ top: 0, behavior: 'smooth' }) }) {
   const [scrolled, setScrolled] = useState(false)
   const [mobileOpen, setMobileOpen] = useState(false)
 

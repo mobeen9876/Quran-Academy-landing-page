@@ -7,7 +7,7 @@ const BrandIcon = () => (
   </svg>
 )
 
-export default function Footer({ onScrollToTop }) {
+export default function Footer({ onScrollToTop = () => window.scrollTo({ top: 0, behavior: 'smooth' }) }) {
   const [email, setEmail]     = useState('')
   const [submitted, setSubmitted] = useState(false)
 
