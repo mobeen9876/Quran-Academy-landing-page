@@ -66,7 +66,7 @@ export default function Features() {
       <div className="wrap">
         <div className="section-head reveal">
           <span className="overline">Platform features</span>
-          <h2>One roadmap, from Qaida to Khatam.</h2>
+          <h2>One roadmap, from Qaida to Completion.</h2>
           <p>Everything your madrasa needs to run Hifz and Nazra classes, in one place.</p>
         </div>
         <div className="feat-grid">

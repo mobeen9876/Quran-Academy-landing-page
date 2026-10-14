@@ -90,7 +90,7 @@ export default function Roadmap() {
       label.setAttribute('x', l.x); label.setAttribute('y', l.y)
       label.setAttribute('text-anchor', l.i === 0 ? 'start' : 'end')
       label.setAttribute('class', 'rm-node-label strong')
-      label.textContent = l.i === 0 ? 'Juz 1' : 'Juz 30 · Khatam'
+      label.textContent = l.i === 0 ? 'Juz 1' : 'Juz 30 · Completion'
       nodesG.appendChild(label)
       const lbb = label.getBBox()
       const lbg = document.createElementNS(svgNS, 'rect')
