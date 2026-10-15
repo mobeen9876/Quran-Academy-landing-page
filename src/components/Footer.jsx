@@ -1,7 +1,7 @@
 import { useState } from 'react'
 
 const BrandIcon = () => (
-  <svg viewBox="0 0 24 24" fill="#C2913A" style={{ width:18, height:18 }}>
+  <svg viewBox="0 0 24 24" fill="#C2913A" style={{ width:16, height:16 }}>
     <path d="M11.1 4.7c-2.4-1.6-5.2-2.2-7.9-1.7-.7.1-1.2.7-1.2 1.5v11.9c0 .9.8 1.6 1.7 1.4 2.4-.4 4.9.2 7 1.6.2.1.4.2.6.2V5.1c-.1-.2-.1-.3-.2-.4Z"/>
     <path d="M12.9 4.7c2.4-1.6 5.2-2.2 7.9-1.7.7.1 1.2.7 1.2 1.5v11.9c0 .9-.8 1.6-1.7 1.4-2.4-.4-4.9.2-7 1.6-.2.1-.4.2-.6.2V5.1c.1-.2.1-.3.2-.4Z"/>
   </svg>
@@ -20,20 +20,20 @@ export default function Footer({ onScrollToTop = () => window.scrollTo({ top: 0,
     <footer>
       <div className="wrap foot-grid">
 
-        {/* brand */}
+        {/* brand — h4 used so it aligns with other column headings */}
         <div className="foot-col">
-          <a
-            href="#"
-            onClick={e => { e.preventDefault(); onScrollToTop() }}
-            style={{ display:'flex', alignItems:'center', gap:10, textDecoration:'none', marginBottom:16 }}
-          >
-            <span style={{ width:32, height:32, borderRadius:9, background:'var(--dark-2)', border:'1px solid var(--line-dark)', display:'flex', alignItems:'center', justifyContent:'center', flexShrink:0 }}>
+          <h4 style={{ display:'flex', alignItems:'center', gap:8, fontSize:13.5, letterSpacing:0, textTransform:'none', color:'var(--on-dark)' }}>
+            <span style={{ width:26, height:26, borderRadius:7, background:'var(--dark-2)', border:'1px solid var(--line-dark)', display:'flex', alignItems:'center', justifyContent:'center', flexShrink:0 }}>
               <BrandIcon />
             </span>
-            <span style={{ fontFamily:"'Fraunces',serif", fontWeight:600, fontSize:18, color:'var(--on-dark)' }}>
+            <a
+              href="#"
+              onClick={e => { e.preventDefault(); onScrollToTop() }}
+              style={{ fontFamily:"'Fraunces',serif", fontWeight:600, fontSize:17, color:'var(--on-dark)', textDecoration:'none' }}
+            >
               Nizam-e-Qurani
-            </span>
-          </a>
+            </a>
+          </h4>
           <p style={{ fontSize:14, color:'var(--on-dark-soft)', maxWidth:260, lineHeight:1.7, margin:0 }}>
             Hifz and Nazra progress tracking for madaris and Quran academies, with automatic WhatsApp updates for parents.
           </p>
