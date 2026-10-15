@@ -663,11 +663,6 @@ details p {
   background: radial-gradient(circle, rgba(13,102,65,.35), transparent 70%);
   top: -150px; left: -80px;
 }
-.cta-band::after {
-  width: 400px; height: 400px;
-  background: radial-gradient(circle, rgba(194,145,58,.18), transparent 70%);
-  bottom: -100px; right: -60px;
-}
 .cta-band h2   { color: #fff; font-size: 44px; max-width: 620px; margin: 0 auto; line-height: 1.1; }
 .cta-band p    { color: var(--on-dark-soft); margin-top: 16px; font-size: 17px; }
 .cta-band .btn { margin-top: 32px; }
