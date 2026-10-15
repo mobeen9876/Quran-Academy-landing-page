@@ -8,7 +8,7 @@ const BrandIcon = () => (
 )
 
 export default function Footer({ onScrollToTop = () => window.scrollTo({ top: 0, behavior: 'smooth' }) }) {
-  const [email, setEmail]     = useState('')
+  const [email, setEmail] = useState('')
   const [submitted, setSubmitted] = useState(false)
 
   const handleSubmit = (e) => {
@@ -20,10 +20,13 @@ export default function Footer({ onScrollToTop = () => window.scrollTo({ top: 0,
     <footer>
       <div className="wrap foot-grid">
 
-        {/* brand — invisible h4 keeps it level with other columns */}
-        <div className="foot-brand">
-          <h4 style={{ visibility:'hidden', marginBottom:16 }}>&nbsp;</h4>
-          <a href="#" onClick={e => { e.preventDefault(); onScrollToTop() }} style={{ display:'flex', alignItems:'center', gap:10, textDecoration:'none' }}>
+        {/* brand */}
+        <div className="foot-col">
+          <a
+            href="#"
+            onClick={e => { e.preventDefault(); onScrollToTop() }}
+            style={{ display:'flex', alignItems:'center', gap:10, textDecoration:'none', marginBottom:16 }}
+          >
             <span style={{ width:32, height:32, borderRadius:9, background:'var(--dark-2)', border:'1px solid var(--line-dark)', display:'flex', alignItems:'center', justifyContent:'center', flexShrink:0 }}>
               <BrandIcon />
             </span>
@@ -31,7 +34,9 @@ export default function Footer({ onScrollToTop = () => window.scrollTo({ top: 0,
               Nizam-e-Qurani
             </span>
           </a>
-          <p>Hifz and Nazra progress tracking for madaris and Quran academies, with automatic WhatsApp updates for parents.</p>
+          <p style={{ fontSize:14, color:'var(--on-dark-soft)', maxWidth:260, lineHeight:1.7, margin:0 }}>
+            Hifz and Nazra progress tracking for madaris and Quran academies, with automatic WhatsApp updates for parents.
+          </p>
         </div>
 
         {/* product links */}
