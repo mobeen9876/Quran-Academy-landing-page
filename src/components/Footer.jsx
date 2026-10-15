@@ -20,10 +20,9 @@ export default function Footer({ onScrollToTop = () => window.scrollTo({ top: 0,
     <footer>
       <div className="wrap foot-grid">
 
-        {/* brand */}
+        {/* brand — invisible h4 keeps it level with other columns */}
         <div className="foot-brand">
-          {/* spacer matches h4 height in other columns */}
-          <div style={{ height: 30 }} />
+          <h4 style={{ visibility:'hidden', marginBottom:16 }}>&nbsp;</h4>
           <a href="#" onClick={e => { e.preventDefault(); onScrollToTop() }} style={{ display:'flex', alignItems:'center', gap:10, textDecoration:'none' }}>
             <span style={{ width:32, height:32, borderRadius:9, background:'var(--dark-2)', border:'1px solid var(--line-dark)', display:'flex', alignItems:'center', justifyContent:'center', flexShrink:0 }}>
               <BrandIcon />
