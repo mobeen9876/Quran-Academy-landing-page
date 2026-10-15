@@ -22,6 +22,8 @@ export default function Footer({ onScrollToTop = () => window.scrollTo({ top: 0,
 
         {/* brand */}
         <div className="foot-brand">
+          {/* spacer matches h4 height in other columns */}
+          <div style={{ height: 30 }} />
           <a href="#" onClick={e => { e.preventDefault(); onScrollToTop() }} style={{ display:'flex', alignItems:'center', gap:10, textDecoration:'none' }}>
             <span style={{ width:32, height:32, borderRadius:9, background:'var(--dark-2)', border:'1px solid var(--line-dark)', display:'flex', alignItems:'center', justifyContent:'center', flexShrink:0 }}>
               <BrandIcon />

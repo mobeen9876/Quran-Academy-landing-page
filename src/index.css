@@ -681,8 +681,7 @@ details p {
    ========================================================= */
 footer { background: var(--dark); color: var(--on-dark-soft); padding: 64px 0 28px; }
 .foot-grid { display: grid; grid-template-columns: 1.6fr 1fr 1fr; gap: 48px; align-items: start; }
-.foot-brand p {
-  margin-top: 14px; font-size: 14px;
+.foot-brand p {  margin-top: 14px; font-size: 14px;
   color: var(--on-dark-soft); max-width: 260px; line-height: 1.7;
 }
 .foot-col h4 {
